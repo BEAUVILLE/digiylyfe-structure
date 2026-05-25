@@ -1,4 +1,4 @@
-# SAP DIGIYLYFE
+#  DIGIYLYFE-STRUCTURE
 
 **L’intelligence métier du terrain vivant.**
 
