@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
 
   <title>SAP DIGIYLYFE — L’intelligence métier du terrain vivant</title>
-  <meta name="description" content="SAP DIGIYLYFE relie PAY, POS, MARKET, RESA, DRIVER, LOC, BUILD et Oreille Métier pour donner au terrain une mémoire, une caisse et un cap." />
-  <meta name="theme-color" content="#10170f" />
+  <meta name="description" content="SAP DIGIYLYFE relie PAY, POS, MARKET, RESA, DRIVER, LOC, BUILD et Oreille Métier pour donner au terrain une mémoire, une caisse, une voix et un cap." />
+  <meta name="theme-color" content="#0d140c" />
   <meta name="robots" content="index,follow" />
 
   <meta property="og:title" content="SAP DIGIYLYFE — L’intelligence métier du terrain vivant" />
@@ -16,59 +16,84 @@
 
   <style>
     :root{
-      --bg:#0e130d;
-      --bg2:#172313;
-      --card:#fff8e8;
-      --paper:#fffdf5;
-      --ink:#182014;
-      --muted:#5e6758;
-      --gold:#d7a83f;
-      --gold2:#f4d27a;
-      --green:#2e7d32;
-      --green2:#7fb069;
-      --line:rgba(215,168,63,.28);
-      --white:#fff;
-      --shadow:0 24px 80px rgba(0,0,0,.35);
-      --radius:28px;
+      --sap-bg:#0d140c;
+      --sap-bg2:#172313;
+      --sap-paper:#fffdf5;
+      --sap-card:#fff8e8;
+      --sap-ink:#182014;
+      --sap-muted:#5d6857;
+      --sap-gold:#d7a83f;
+      --sap-gold2:#f4d27a;
+      --sap-green:#2f7d35;
+      --sap-line:rgba(215,168,63,.30);
+      --sap-white:#fff;
+      --sap-shadow:0 24px 80px rgba(0,0,0,.36);
+      --sap-radius:30px;
     }
 
     *{box-sizing:border-box}
 
-    html{
-      scroll-behavior:smooth;
-    }
+    html{scroll-behavior:smooth}
 
     body{
       margin:0;
       font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
-      color:var(--ink);
       background:
-        radial-gradient(circle at 10% 0%, rgba(244,210,122,.18), transparent 34%),
-        radial-gradient(circle at 90% 10%, rgba(127,176,105,.16), transparent 34%),
-        linear-gradient(180deg,var(--bg),#0a0d09 48%,#11170f);
+        radial-gradient(circle at 8% 0%, rgba(244,210,122,.20), transparent 34%),
+        radial-gradient(circle at 90% 6%, rgba(127,176,105,.16), transparent 34%),
+        linear-gradient(180deg,var(--sap-bg),#080b07 48%,#11170f);
+      color:var(--sap-ink);
       line-height:1.65;
     }
 
-    a{
+    /* PATCH WORDPRESS — si le HTML est collé dans WordPress */
+    .entry-content,
+    .wp-block-post-content,
+    .site-main,
+    .content-area,
+    .wp-site-blocks{
+      max-width:none !important;
+      width:100% !important;
+    }
+
+    .entry-content > *,
+    .wp-block-post-content > *{
+      max-width:none !important;
+    }
+
+    .wp-block-post-title,
+    .entry-title{
+      display:none !important;
+    }
+
+    .digiy-sap{
+      width:100%;
+      min-height:100vh;
+      overflow-x:hidden;
+      color:var(--sap-ink);
+    }
+
+    .digiy-sap a{
       color:inherit;
       text-decoration:none;
     }
 
-    .wrap{
+    .sap-wrap{
       width:min(1120px, calc(100% - 32px));
-      margin:0 auto;
+      margin-left:auto;
+      margin-right:auto;
     }
 
-    header{
+    .sap-topbar{
       position:sticky;
       top:0;
-      z-index:20;
+      z-index:50;
       backdrop-filter:blur(18px);
-      background:rgba(14,19,13,.78);
-      border-bottom:1px solid rgba(255,255,255,.08);
+      background:rgba(13,20,12,.82);
+      border-bottom:1px solid rgba(255,255,255,.10);
     }
 
-    .nav{
+    .sap-nav{
       min-height:72px;
       display:flex;
       align-items:center;
@@ -77,349 +102,372 @@
       color:#fff8e8;
     }
 
-    .brand{
+    .sap-brand{
       display:flex;
       align-items:center;
       gap:12px;
-      font-weight:900;
-      letter-spacing:.04em;
+      font-weight:950;
+      letter-spacing:.035em;
+      color:#fff8e8 !important;
     }
 
-    .logo{
-      width:42px;
-      height:42px;
+    .sap-logo{
+      width:44px;
+      height:44px;
       border-radius:16px;
       display:grid;
       place-items:center;
-      background:linear-gradient(135deg,var(--gold),#fff0a5);
+      background:linear-gradient(135deg,var(--sap-gold),#fff0a5);
       color:#11170f;
       box-shadow:0 12px 28px rgba(215,168,63,.25);
+      flex:0 0 auto;
     }
 
-    .nav-actions{
+    .sap-actions{
       display:flex;
       align-items:center;
+      justify-content:flex-end;
       gap:10px;
       flex-wrap:wrap;
-      justify-content:flex-end;
     }
 
-    .nav-actions a,
-    .nav-actions button{
+    .sap-actions a,
+    .sap-actions button{
       border:1px solid rgba(244,210,122,.35);
-      color:#fff8e8;
+      color:#fff8e8 !important;
       background:rgba(255,255,255,.06);
       padding:10px 13px;
       border-radius:999px;
-      font-weight:800;
+      font-weight:900;
       font-size:14px;
       cursor:pointer;
-    }
-
-    .nav-actions button{
       font-family:inherit;
+      line-height:1;
     }
 
-    .hero{
+    .sap-hero{
       color:#fff8e8;
       padding:72px 0 34px;
     }
 
-    .hero-grid{
+    .sap-hero-grid{
       display:grid;
       grid-template-columns:1.08fr .92fr;
       gap:28px;
       align-items:stretch;
     }
 
-    .hero-card{
-      border:1px solid rgba(244,210,122,.24);
-      border-radius:36px;
-      padding:34px;
-      background:
-        linear-gradient(145deg,rgba(255,255,255,.08),rgba(255,255,255,.035)),
-        radial-gradient(circle at 8% 0%, rgba(215,168,63,.18), transparent 44%);
-      box-shadow:var(--shadow);
-      overflow:hidden;
+    .sap-hero-card{
       position:relative;
+      overflow:hidden;
+      border:1px solid rgba(244,210,122,.25);
+      border-radius:38px;
+      padding:36px;
+      background:
+        linear-gradient(145deg,rgba(255,255,255,.09),rgba(255,255,255,.035)),
+        radial-gradient(circle at 7% 0%, rgba(215,168,63,.20), transparent 44%);
+      box-shadow:var(--sap-shadow);
     }
 
-    .hero-card:before{
+    .sap-hero-card:before{
       content:"";
       position:absolute;
-      inset:auto -80px -120px auto;
-      width:260px;
-      height:260px;
+      inset:auto -80px -130px auto;
+      width:280px;
+      height:280px;
       border-radius:50%;
-      background:rgba(127,176,105,.13);
+      background:rgba(127,176,105,.14);
       filter:blur(2px);
     }
 
-    .eyebrow{
+    .sap-eyebrow{
       display:inline-flex;
       align-items:center;
       gap:8px;
       padding:8px 12px;
       border-radius:999px;
       background:rgba(244,210,122,.13);
-      border:1px solid rgba(244,210,122,.32);
+      border:1px solid rgba(244,210,122,.34);
       color:#fff1b8;
-      font-weight:900;
+      font-weight:950;
       font-size:13px;
       letter-spacing:.08em;
       text-transform:uppercase;
     }
 
-    h1{
-      margin:18px 0 18px;
-      font-size:clamp(38px,6vw,76px);
+    .digiy-sap .sap-title{
+      margin:20px 0 18px;
+      font-size:clamp(40px,6vw,78px);
       line-height:.96;
-      letter-spacing:-.06em;
+      letter-spacing:-.065em;
+      color:#ffffff !important;
+      text-shadow:0 10px 34px rgba(0,0,0,.55);
+      font-weight:950;
     }
 
-    .lead{
+    .sap-lead{
       font-size:clamp(19px,2.2vw,26px);
       line-height:1.35;
-      color:#fff4ca;
-      max-width:830px;
-      font-weight:750;
+      color:#fff4ca !important;
+      max-width:860px;
+      font-weight:780;
       margin:0;
     }
 
-    .hero strong{
-      color:#fff;
+    .sap-lead strong{
+      color:#ffffff;
     }
 
-    .cta-row{
+    .sap-cta-row{
       display:flex;
       flex-wrap:wrap;
       gap:12px;
-      margin-top:26px;
+      margin-top:28px;
     }
 
-    .btn{
+    .sap-btn{
       display:inline-flex;
       align-items:center;
       justify-content:center;
       gap:9px;
-      min-height:48px;
+      min-height:50px;
       padding:13px 18px;
       border-radius:999px;
-      border:1px solid rgba(255,255,255,.14);
-      font-weight:900;
-      box-shadow:0 14px 30px rgba(0,0,0,.22);
+      border:1px solid rgba(255,255,255,.16);
+      font-weight:950;
+      cursor:pointer;
+      font-family:inherit;
+      box-shadow:0 14px 30px rgba(0,0,0,.24);
     }
 
-    .btn.gold{
-      background:linear-gradient(135deg,var(--gold),var(--gold2));
-      color:#161b10;
+    .sap-btn-gold{
+      background:linear-gradient(135deg,var(--sap-gold),var(--sap-gold2));
+      color:#161b10 !important;
     }
 
-    .btn.dark{
-      background:rgba(255,255,255,.08);
-      color:#fff8e8;
+    .sap-btn-dark{
+      background:rgba(255,255,255,.09);
+      color:#fff8e8 !important;
     }
 
-    .side-panel{
-      border-radius:36px;
+    .sap-side-panel{
+      border-radius:38px;
       padding:26px;
-      border:1px solid rgba(244,210,122,.24);
+      border:1px solid rgba(244,210,122,.28);
       background:#fff8e8;
-      color:var(--ink);
-      box-shadow:var(--shadow);
+      color:var(--sap-ink);
+      box-shadow:var(--sap-shadow);
     }
 
-    .side-panel h2{
+    .sap-side-panel h2{
       margin:0 0 14px;
       line-height:1.08;
-      font-size:28px;
-      letter-spacing:-.03em;
+      font-size:29px;
+      letter-spacing:-.035em;
+      color:#11170f !important;
+      font-weight:950;
     }
 
-    .audio-box{
-      padding:18px;
-      border-radius:24px;
+    .sap-side-panel p{
+      color:#303a2a;
+      font-weight:700;
+    }
+
+    .sap-audio-box{
+      padding:20px;
+      border-radius:26px;
       background:linear-gradient(145deg,#fffdf5,#f3e7c8);
-      border:1px solid rgba(215,168,63,.32);
+      border:1px solid rgba(215,168,63,.34);
       margin-bottom:18px;
     }
 
-    .audio-controls{
+    .sap-audio-controls{
       display:flex;
       gap:10px;
       flex-wrap:wrap;
-      margin-top:12px;
+      margin-top:14px;
     }
 
-    .audio-controls button{
+    .sap-audio-controls button{
       border:0;
       border-radius:999px;
-      padding:12px 15px;
+      padding:12px 16px;
       font-weight:950;
       cursor:pointer;
       font-family:inherit;
     }
 
-    .listen{
+    .sap-listen{
       background:#11170f;
       color:#fff8e8;
     }
 
-    .stop{
+    .sap-stop{
       background:#e8dcc1;
       color:#1c2518;
     }
 
-    .mini-grid{
+    .sap-mini-grid{
       display:grid;
       grid-template-columns:1fr 1fr;
       gap:10px;
       margin-top:16px;
     }
 
-    .mini{
-      padding:14px;
+    .sap-mini{
+      padding:15px;
       border-radius:20px;
       background:#fffdf5;
       border:1px solid rgba(24,32,20,.08);
-      font-weight:900;
-      line-height:1.2;
-    }
-
-    main{
-      padding:20px 0 68px;
-    }
-
-    article{
-      background:var(--paper);
-      border-radius:42px;
-      overflow:hidden;
-      box-shadow:0 20px 80px rgba(0,0,0,.34);
-      border:1px solid rgba(255,255,255,.22);
-    }
-
-    .article-inner{
-      width:min(880px, calc(100% - 34px));
-      margin:0 auto;
-      padding:54px 0 60px;
-    }
-
-    .intro-note{
-      padding:22px;
-      border-radius:26px;
-      background:linear-gradient(135deg,#fff2c7,#ffffff);
-      border:1px solid rgba(215,168,63,.34);
-      font-size:20px;
-      font-weight:800;
-      line-height:1.45;
-      margin-bottom:38px;
-    }
-
-    h2{
-      font-size:clamp(28px,4vw,46px);
-      line-height:1.05;
-      letter-spacing:-.045em;
-      margin:48px 0 14px;
+      font-weight:950;
+      line-height:1.15;
       color:#11170f;
     }
 
-    h3{
-      font-size:clamp(22px,3vw,31px);
-      line-height:1.12;
-      margin:34px 0 12px;
-      letter-spacing:-.03em;
-      color:#162114;
+    .sap-mini small{
+      display:block;
+      color:#68725f;
+      font-weight:800;
+      margin-top:4px;
     }
 
-    p{
+    .sap-main{
+      padding:20px 0 68px;
+    }
+
+    .sap-article{
+      background:var(--sap-paper);
+      border-radius:44px;
+      overflow:hidden;
+      box-shadow:0 20px 80px rgba(0,0,0,.35);
+      border:1px solid rgba(255,255,255,.22);
+    }
+
+    .sap-article-inner{
+      width:min(890px, calc(100% - 34px));
+      margin:0 auto;
+      padding:56px 0 62px;
+    }
+
+    .sap-intro-note{
+      padding:24px;
+      border-radius:28px;
+      background:linear-gradient(135deg,#fff2c7,#ffffff);
+      border:1px solid rgba(215,168,63,.36);
+      font-size:21px;
+      font-weight:850;
+      line-height:1.45;
+      margin-bottom:40px;
+      color:#172014;
+    }
+
+    .digiy-sap .sap-h2{
+      font-size:clamp(29px,4vw,48px);
+      line-height:1.05;
+      letter-spacing:-.048em;
+      margin:50px 0 16px;
+      color:#11170f !important;
+      font-weight:950;
+    }
+
+    .digiy-sap .sap-h3{
+      font-size:clamp(23px,3vw,32px);
+      line-height:1.12;
+      margin:34px 0 12px;
+      letter-spacing:-.034em;
+      color:#162114 !important;
+      font-weight:950;
+    }
+
+    .digiy-sap p{
       font-size:19px;
       margin:0 0 18px;
       color:#263020;
     }
 
-    .big-line{
-      font-size:clamp(24px,3.5vw,38px);
-      line-height:1.12;
-      font-weight:950;
+    .sap-big-line{
+      font-size:clamp(25px,3.5vw,39px) !important;
+      line-height:1.12 !important;
+      font-weight:950 !important;
       letter-spacing:-.045em;
-      color:#11170f;
-      margin:30px 0;
+      color:#11170f !important;
+      margin:32px 0 !important;
     }
 
-    .quote{
-      margin:32px 0;
-      padding:26px;
-      border-left:8px solid var(--gold);
-      border-radius:0 26px 26px 0;
+    .sap-quote{
+      margin:34px 0;
+      padding:27px;
+      border-left:8px solid var(--sap-gold);
+      border-radius:0 28px 28px 0;
       background:#fff5d9;
-      font-weight:900;
+      font-weight:950;
       font-size:24px;
       line-height:1.35;
       color:#171f13;
     }
 
-    .doctrine{
+    .sap-doctrine{
       display:grid;
       grid-template-columns:repeat(2,1fr);
       gap:14px;
       margin:30px 0;
     }
 
-    .tile{
-      padding:20px;
-      border-radius:24px;
+    .sap-tile{
+      padding:21px;
+      border-radius:25px;
       background:#f8efd7;
-      border:1px solid rgba(215,168,63,.25);
+      border:1px solid rgba(215,168,63,.27);
     }
 
-    .tile b{
+    .sap-tile b{
       display:block;
-      font-size:22px;
+      font-size:23px;
       line-height:1.1;
       margin-bottom:8px;
       color:#11170f;
     }
 
-    .tile span{
+    .sap-tile span{
       color:#4d5847;
-      font-weight:700;
+      font-weight:760;
     }
 
-    .chain{
+    .sap-chain{
       margin:34px 0;
-      padding:24px;
-      border-radius:30px;
+      padding:25px;
+      border-radius:32px;
       background:#11170f;
       color:#fff8e8;
     }
 
-    .chain h3{
-      color:#fff8e8;
+    .sap-chain .sap-h3{
+      color:#fff8e8 !important;
       margin-top:0;
     }
 
-    .chain p{
-      color:#f6edcf;
-      font-weight:750;
+    .sap-chain p{
+      color:#f6edcf !important;
+      font-weight:780;
     }
 
-    .module-grid{
+    .sap-module-grid{
       display:grid;
       grid-template-columns:repeat(3,1fr);
       gap:12px;
-      margin:26px 0;
+      margin:28px 0;
     }
 
-    .module{
+    .sap-module{
       background:#fffdf5;
-      border:1px solid rgba(255,255,255,.18);
-      border-radius:22px;
+      border:1px solid rgba(24,32,20,.10);
+      border-radius:23px;
       padding:16px;
       color:#182014;
-      font-weight:900;
+      font-weight:950;
     }
 
-    .module small{
+    .sap-module small{
       display:block;
       color:#65705e;
       font-weight:800;
@@ -427,156 +475,154 @@
       line-height:1.25;
     }
 
-    .comparison{
+    .sap-comparison{
       display:grid;
       grid-template-columns:1fr 1fr;
       gap:18px;
       margin:30px 0;
     }
 
-    .compare-card{
-      padding:24px;
-      border-radius:28px;
-      border:1px solid rgba(24,32,20,.1);
+    .sap-compare-card{
+      padding:25px;
+      border-radius:30px;
+      border:1px solid rgba(24,32,20,.10);
       background:#f7f2e4;
     }
 
-    .compare-card.dark{
+    .sap-compare-card.sap-dark{
       background:#152012;
       color:#fff8e8;
     }
 
-    .compare-card.dark p,
-    .compare-card.dark li{
-      color:#f7ecc7;
+    .sap-compare-card.sap-dark .sap-h3,
+    .sap-compare-card.sap-dark li{
+      color:#f7ecc7 !important;
     }
 
-    .compare-card h3{
+    .sap-compare-card .sap-h3{
       margin-top:0;
     }
 
-    ul{
+    .digiy-sap ul{
       margin:14px 0 0;
       padding-left:22px;
     }
 
-    li{
+    .digiy-sap li{
       font-size:18px;
       margin:9px 0;
       color:#263020;
-      font-weight:720;
+      font-weight:760;
     }
 
-    .finale{
-      margin-top:48px;
-      padding:34px;
-      border-radius:34px;
+    .sap-finale{
+      margin-top:50px;
+      padding:36px;
+      border-radius:36px;
       background:
-        radial-gradient(circle at 0% 0%,rgba(244,210,122,.28),transparent 42%),
+        radial-gradient(circle at 0% 0%,rgba(244,210,122,.30),transparent 42%),
         linear-gradient(135deg,#182313,#0f160d);
       color:#fff8e8;
     }
 
-    .finale h2{
-      color:#fff8e8;
+    .sap-finale .sap-h2{
+      color:#fff8e8 !important;
       margin-top:0;
     }
 
-    .finale p{
-      color:#f9efcf;
-      font-weight:780;
+    .sap-finale p{
+      color:#f9efcf !important;
+      font-weight:800;
     }
 
-    .signature{
-      font-size:clamp(26px,4vw,44px);
+    .sap-signature{
+      font-size:clamp(27px,4vw,46px);
       line-height:1.05;
-      letter-spacing:-.045em;
+      letter-spacing:-.047em;
       font-weight:950;
-      margin-top:26px;
+      margin-top:28px;
       color:#fff;
     }
 
-    footer{
+    .sap-floating-pay{
+      position:fixed;
+      right:18px;
+      bottom:18px;
+      z-index:80;
+      border-radius:999px;
+      padding:14px 18px;
+      background:linear-gradient(135deg,var(--sap-gold),var(--sap-gold2));
+      color:#151a10 !important;
+      font-weight:950;
+      box-shadow:0 14px 34px rgba(0,0,0,.34);
+      border:1px solid rgba(255,255,255,.32);
+    }
+
+    .sap-footer{
       color:#fff8e8;
-      padding:38px 0 56px;
+      padding:38px 0 58px;
       text-align:center;
     }
 
-    footer p{
-      color:#dbcfae;
+    .sap-footer p{
+      color:#dbcfae !important;
       font-size:15px;
       margin:8px 0;
     }
 
-    .floating-pay{
-      position:fixed;
-      right:18px;
-      bottom:18px;
-      z-index:30;
-      border-radius:999px;
-      padding:14px 18px;
-      background:linear-gradient(135deg,var(--gold),var(--gold2));
-      color:#151a10;
-      font-weight:950;
-      box-shadow:0 14px 34px rgba(0,0,0,.32);
-      border:1px solid rgba(255,255,255,.3);
-    }
-
     @media (max-width:880px){
-      .hero{
+      .sap-hero{
         padding:38px 0 22px;
       }
 
-      .hero-grid,
-      .comparison{
+      .sap-hero-grid,
+      .sap-comparison{
         grid-template-columns:1fr;
       }
 
-      .hero-card,
-      .side-panel{
+      .sap-hero-card,
+      .sap-side-panel{
         border-radius:30px;
         padding:24px;
       }
 
-      .nav{
+      .sap-nav{
+        min-height:auto;
         align-items:flex-start;
         flex-direction:column;
         padding:12px 0;
       }
 
-      .nav-actions{
+      .sap-actions{
         justify-content:flex-start;
       }
 
-      .nav-actions a,
-      .nav-actions button{
+      .sap-actions a,
+      .sap-actions button{
         font-size:13px;
         padding:9px 11px;
       }
 
-      .article-inner{
-        width:min(100% - 26px, 880px);
-        padding:34px 0 42px;
-      }
-
-      article{
+      .sap-article{
         border-radius:30px;
       }
 
-      p{
+      .sap-article-inner{
+        width:min(100% - 26px, 890px);
+        padding:36px 0 44px;
+      }
+
+      .digiy-sap p{
         font-size:18px;
       }
 
-      .doctrine,
-      .module-grid{
+      .sap-doctrine,
+      .sap-module-grid,
+      .sap-mini-grid{
         grid-template-columns:1fr;
       }
 
-      .mini-grid{
-        grid-template-columns:1fr;
-      }
-
-      .floating-pay{
+      .sap-floating-pay{
         left:16px;
         right:16px;
         text-align:center;
@@ -586,422 +632,427 @@
 </head>
 
 <body>
-  <header>
-    <div class="wrap nav">
-      <a class="brand" href="#top" aria-label="Retour en haut">
-        <span class="logo">🦅</span>
-        <span>SAP DIGIYLYFE</span>
-      </a>
+  <div class="digiy-sap" id="top">
+    <header class="sap-topbar">
+      <div class="sap-wrap sap-nav">
+        <a class="sap-brand" href="#top" aria-label="Retour en haut">
+          <span class="sap-logo">🦅</span>
+          <span>SAP DIGIYLYFE</span>
+        </a>
 
-      <nav class="nav-actions" aria-label="Navigation rapide">
-        <a href="https://digiylyfe.com/">🌍 Site</a>
-        <a href="https://digiy-hub.digiylyfe.com/">🧭 HUB</a>
-        <a href="https://tarifs.digiylyfe.com/">📦 Tarifs</a>
-        <button type="button" id="topListenBtn">🎧 Écouter</button>
-      </nav>
-    </div>
-  </header>
-
-  <section class="hero" id="top">
-    <div class="wrap hero-grid">
-      <div class="hero-card">
-        <span class="eyebrow">Écosystème métier du terrain vivant</span>
-        <h1>Donner au terrain ce que les grandes entreprises ont déjà.</h1>
-        <p class="lead">
-          <strong>DIGIYLYFE</strong> relie l’argent, la caisse, la voix, les ventes,
-          les réservations, les trajets, les logements, les services, les preuves,
-          WhatsApp, Wave et le QR dans une seule intelligence métier.
-        </p>
-
-        <div class="cta-row">
-          <a class="btn gold" href="#article">Lire l’article</a>
-          <button class="btn dark" type="button" id="heroListenBtn">🎧 Écouter DIGIY</button>
-          <a class="btn dark" href="#sap">Comprendre SAP DIGIYLYFE</a>
-        </div>
+        <nav class="sap-actions" aria-label="Navigation rapide">
+          <a href="https://digiylyfe.com/">🌍 Site</a>
+          <a href="https://digiy-hub.digiylyfe.com/">🧭 HUB</a>
+          <a href="https://tarifs.digiylyfe.com/">📦 Tarifs</a>
+          <button type="button" id="sapTopListenBtn">🎧 Écouter</button>
+        </nav>
       </div>
+    </header>
 
-      <aside class="side-panel">
-        <div class="audio-box">
-          <h2>Le terrain travaille déjà. DIGIY lui donne la mémoire, la caisse, la voix et le cap.</h2>
-          <p>
-            Un lecteur simple pour faire entendre la vision sans fatiguer les yeux.
+    <section class="sap-hero">
+      <div class="sap-wrap sap-hero-grid">
+        <div class="sap-hero-card">
+          <span class="sap-eyebrow">Écosystème métier du terrain vivant</span>
+
+          <h1 class="sap-title">Donner au terrain ce que les grandes entreprises ont déjà.</h1>
+
+          <p class="sap-lead">
+            <strong>DIGIYLYFE</strong> relie l’argent, la caisse, la voix, les ventes,
+            les réservations, les trajets, les logements, les services, les preuves,
+            WhatsApp, Wave et le QR dans une seule intelligence métier.
           </p>
-          <div class="audio-controls">
-            <button class="listen" type="button" id="listenBtn">🎧 Écouter</button>
-            <button class="stop" type="button" id="stopBtn">⏹ Stop</button>
+
+          <div class="sap-cta-row">
+            <a class="sap-btn sap-btn-gold" href="#article">Lire l’article</a>
+            <button class="sap-btn sap-btn-dark" type="button" id="sapHeroListenBtn">🎧 Écouter DIGIY</button>
+            <a class="sap-btn sap-btn-dark" href="#sap">Comprendre SAP DIGIYLYFE</a>
           </div>
         </div>
 
-        <div class="mini-grid">
-          <div class="mini">PAY<br><small>cerveau économique</small></div>
-          <div class="mini">Modules<br><small>organes du terrain</small></div>
-          <div class="mini">Oreille<br><small>capture de la parole</small></div>
-          <div class="mini">Le pro<br><small>main qui valide</small></div>
-        </div>
-      </aside>
-    </div>
-  </section>
+        <aside class="sap-side-panel">
+          <div class="sap-audio-box">
+            <h2>Le terrain travaille déjà. DIGIYLYFE lui donne la mémoire, la caisse, la voix et le cap.</h2>
+            <p>
+              Un lecteur simple pour faire entendre la vision sans fatiguer les yeux.
+            </p>
 
-  <main class="wrap" id="article">
-    <article>
-      <div class="article-inner" id="articleText">
-        <div class="intro-note">
-          DIGIYLYFE n’est pas seulement une application. C’est un système de gestion métier,
-          adapté au terrain, à la voix, au téléphone, au paiement direct et à la relation humaine.
-        </div>
-
-        <h2>DIGIYLYFE : donner au terrain ce que les grandes entreprises ont déjà</h2>
-
-        <p>
-          Il existe des logiciels puissants pour les grandes entreprises.
-          Ils organisent les ventes, les clients, les stocks, les paiements,
-          les marges, les dépenses, les alertes, les équipes et les processus.
-        </p>
-
-        <p>
-          Mais sur le terrain vivant, dans les boutiques, les taxis, les logements,
-          les services, les restaurants, les artisans et les petites activités locales,
-          beaucoup de professionnels travaillent encore avec la mémoire, le téléphone,
-          WhatsApp, Wave, le carnet, la parole donnée et quelques notes dispersées.
-        </p>
-
-        <p>
-          Le problème n’est pas que le terrain ne travaille pas.
-          Le terrain travaille beaucoup.
-        </p>
-
-        <p>
-          Le problème, c’est que l’activité ne laisse pas toujours une trace claire.
-        </p>
-
-        <p>
-          Une vente part. Un client promet. Une dette reste. Un stock baisse.
-          Une réservation arrive. Un trajet se prépare. Un paiement est reçu.
-          Une dépense est oubliée. Une preuve se perd.
-        </p>
-
-        <p>
-          Et à la fin de la journée, le professionnel a travaillé,
-          mais il ne voit pas toujours clairement où est passé son argent.
-        </p>
-
-        <p class="big-line">
-          C’est là que DIGIYLYFE prend tout son sens.
-        </p>
-
-        <h2>DIGIYLYFE, l’écosystème métier du terrain vivant</h2>
-
-        <p>
-          DIGIYLYFE est un écosystème métier. Il ne vient pas remplacer le professionnel.
-          Il vient l’aider à garder la main.
-        </p>
-
-        <div class="quote">
-          Le pro parle. DIGIY écoute. DIGIY prépare. Le pro valide.
-        </div>
-
-        <p>
-          C’est une logique simple, humaine et puissante.
-          Dans cet écosystème, chaque partie a son rôle.
-        </p>
-
-        <div class="doctrine">
-          <div class="tile">
-            <b>PAY</b>
-            <span>Le cerveau économique. Il tient l’argent, les recettes, les dépenses, les dettes et la pression.</span>
+            <div class="sap-audio-controls">
+              <button class="sap-listen" type="button" id="sapListenBtn">🎧 Écouter</button>
+              <button class="sap-stop" type="button" id="sapStopBtn">⏹ Stop</button>
+            </div>
           </div>
-          <div class="tile">
-            <b>Les modules</b>
-            <span>Les organes du terrain : vente, caisse, réservation, trajet, logement, service, stock, client.</span>
+
+          <div class="sap-mini-grid">
+            <div class="sap-mini">PAY<small>cerveau économique</small></div>
+            <div class="sap-mini">Modules<small>organes du terrain</small></div>
+            <div class="sap-mini">Oreille<small>capture de la parole</small></div>
+            <div class="sap-mini">Le pro<small>main qui valide</small></div>
           </div>
-          <div class="tile">
-            <b>Oreille Métier</b>
-            <span>La capture de la parole. Le pro parle, DIGIY prépare une trace propre.</span>
-          </div>
-          <div class="tile">
-            <b>Le professionnel</b>
-            <span>La main qui valide. Rien n’est confirmé sans sa vérité.</span>
-          </div>
-        </div>
-
-        <p>
-          Un logiciel ne doit pas commander la vie du terrain.
-          Il doit l’aider à se structurer sans la dénaturer.
-        </p>
-
-        <h2>PAY : le cerveau économique</h2>
-
-        <p>
-          Dans DIGIYLYFE, PAY n’est pas seulement une page de paiement.
-          PAY est le cerveau économique.
-        </p>
-
-        <p>
-          C’est là que l’activité remonte. C’est là que les ventes, les dépenses,
-          les dettes, les recettes, les paiements, les preuves et les mouvements
-          doivent finir par être compris.
-        </p>
-
-        <p>
-          Si l’activité ne remonte pas à PAY, DIGIYLYFE ne peut pas produire
-          la vraie lecture.
-        </p>
-
-        <div class="chain">
-          <h3>Sans remontée vers PAY, il manque le vrai cap.</h3>
-          <p>
-            Pas de température. Pas de marge claire. Pas de pression financière visible.
-            Pas de dettes bien suivies. Pas de recettes fiables. Pas de dépenses propres.
-            Pas d’alertes utiles. Pas de vraie direction.
-          </p>
-        </div>
-
-        <p>
-          Le terrain peut continuer à travailler, oui.
-          Mais il avance avec du brouillard.
-        </p>
-
-        <p>
-          PAY sert à enlever ce brouillard.
-          Il ne juge pas. Il ne complique pas. Il clarifie.
-        </p>
-
-        <p>
-          Une vente devient une trace. Une dépense devient une information.
-          Une dette devient un suivi. Un paiement devient une preuve.
-          Une journée devient une lecture. Une activité devient une direction.
-        </p>
-
-        <h2>La valeur de la trace</h2>
-
-        <p>
-          DIGIYLYFE doit accompagner doucement le professionnel.
-          Parce que sur le terrain, noter n’est pas toujours un réflexe.
-        </p>
-
-        <p>
-          Beaucoup de professionnels ont appris à travailler vite, à faire confiance
-          à leur mémoire, à répondre au client, à courir derrière l’urgence.
-        </p>
-
-        <div class="quote">
-          Tu ne notes pas pour faire plaisir au logiciel.<br>
-          Tu notes pour protéger ton argent.<br>
-          Tu notes pour te souvenir.<br>
-          Tu notes pour voir clair.<br>
-          Tu notes pour grandir.
-        </div>
-
-        <p>
-          La trace n’est pas une punition. La trace est une protection.
-        </p>
-
-        <p>
-          C’est une mémoire qui protège. Une caisse qui clarifie.
-          Un carnet qui ne ment pas. Un assistant qui évite les oublis.
-        </p>
-
-        <p>
-          Quand le pro note une vente, il protège son chiffre.
-          Quand il note une dette, il protège son droit.
-          Quand il note une dépense, il protège sa marge.
-          Quand il garde une preuve, il protège sa parole.
-          Quand il relie son activité à PAY, il protège son avenir.
-        </p>
-
-        <h2>France et Afrique : deux besoins, une même clarté</h2>
-
-        <p>
-          En France, DIGIY peut vendre la clarté de gestion.
-        </p>
-
-        <p>
-          Beaucoup de professionnels savent déjà qu’il faut suivre, déclarer,
-          organiser, anticiper. Ils cherchent des outils simples, moins lourds,
-          plus humains et plus proches de leur métier.
-        </p>
-
-        <p>
-          En Afrique, DIGIY doit aussi enseigner la valeur de la trace.
-        </p>
-
-        <p>
-          Pas avec arrogance. Pas avec un langage de bureau.
-          Pas avec des tableaux froids.
-        </p>
-
-        <p>
-          Mais avec une pédagogie du terrain :
-          ton argent mérite une mémoire, ton travail mérite une preuve,
-          ton client mérite un suivi, ton activité mérite une direction.
-        </p>
-
-        <p class="big-line">
-          Dans les deux cas, PAY reste le cerveau.
-        </p>
-
-        <h2 id="sap">SAP DIGIYLYFE : la couche organisationnelle du projet</h2>
-
-        <p>
-          Les grandes entreprises ont leurs systèmes.
-          Elles ont leurs outils, leurs processus, leurs tableaux,
-          leurs lectures et leurs directions.
-        </p>
-
-        <div class="comparison">
-          <section class="compare-card">
-            <h3>SAP</h3>
-            <ul>
-              <li>Parle aux directions.</li>
-              <li>Parle aux bureaux.</li>
-              <li>Organise les groupes.</li>
-              <li>Lit l’entreprise.</li>
-            </ul>
-          </section>
-
-          <section class="compare-card dark">
-            <h3>DIGIYLYFE</h3>
-            <ul>
-              <li>Parle aux métiers.</li>
-              <li>Parle au téléphone du pro.</li>
-              <li>Organise le terrain.</li>
-              <li>Lit la vie économique locale.</li>
-            </ul>
-          </section>
-        </div>
-
-        <p>
-          C’est là que SAP DIGIYLYFE trouve sa place : non pas comme imitation,
-          mais comme nom de la couche organisationnelle du projet.
-        </p>
-
-        <p>
-          C’est la couche qui relie les modules. C’est la couche qui donne du sens
-          aux traces. C’est la couche qui transforme les gestes du quotidien
-          en intelligence métier.
-        </p>
-
-        <div class="module-grid">
-          <div class="module">PAY<small>tient l’argent</small></div>
-          <div class="module">POS<small>tient la caisse</small></div>
-          <div class="module">MARKET<small>tient la vente</small></div>
-          <div class="module">RESA<small>tient la réservation</small></div>
-          <div class="module">DRIVER<small>tient le transport</small></div>
-          <div class="module">LOC<small>tient le logement</small></div>
-          <div class="module">BUILD<small>tient les services</small></div>
-          <div class="module">Oreille Métier<small>capte la parole</small></div>
-          <div class="module">SAP DIGIYLYFE<small>relie tout ça</small></div>
-        </div>
-
-        <p>
-          Une vente dans MARKET. Un paiement dans PAY. Une caisse dans POS.
-          Une réservation dans RESA. Un trajet dans DRIVER. Un logement dans LOC.
-          Un service dans BUILD. Une parole captée par Oreille Métier.
-        </p>
-
-        <p>
-          Tout cela ne doit pas rester séparé.
-          DIGIYLYFE doit relier, lire, clarifier, protéger et aider le pro à décider.
-        </p>
-
-        <h2>Donner au terrain ce que les grands ont déjà</h2>
-
-        <p>
-          La vérité est simple. DIGIYLYFE veut donner au terrain ce que les grandes
-          entreprises ont déjà :
-        </p>
-
-        <ul>
-          <li>de la structure,</li>
-          <li>des outils,</li>
-          <li>une lecture,</li>
-          <li>une mémoire,</li>
-          <li>des processus,</li>
-          <li>un argent suivi,</li>
-          <li>un client gardé,</li>
-          <li>une activité organisée.</li>
-        </ul>
-
-        <p>
-          Mais avec une différence fondamentale :
-          DIGIYLYFE ne parle pas depuis une tour de verre.
-        </p>
-
-        <p>
-          DIGIYLYFE parle depuis le téléphone.
-          Depuis la boutique. Depuis le taxi. Depuis le logement.
-          Depuis le chantier. Depuis le restaurant. Depuis le marché.
-          Depuis WhatsApp. Depuis Wave. Depuis la voix. Depuis le QR.
-          Depuis la relation humaine.
-        </p>
-
-        <p>
-          Le terrain ne doit pas devenir une entreprise froide.
-          Il doit devenir un terrain mieux équipé.
-        </p>
-
-        <p>
-          Le pro garde son nom. Il garde son client. Il garde son argent.
-          Il garde sa relation. Il garde sa dignité.
-        </p>
-
-        <p>
-          DIGIYLYFE apporte la structure autour de lui.
-        </p>
-
-        <div class="finale">
-          <h2>La ligne était déjà là</h2>
-
-          <p>
-            Aujourd’hui, on ne découvre pas DIGIYLYFE. On le reconnaît.
-          </p>
-
-          <p>
-            La ligne était déjà là : un système de gestion métier, adapté au terrain,
-            à la voix, au téléphone, au paiement direct et à la relation humaine.
-          </p>
-
-          <p>
-            Un écosystème où PAY tient l’argent, où les modules tiennent les métiers,
-            où Oreille capte la parole, où le pro valide, où la trace protège,
-            où la caisse clarifie, où le carnet ne ment pas, où l’assistant évite les oublis.
-          </p>
-
-          <p>
-            SAP DIGIYLYFE n’est pas une copie des grands systèmes.
-            C’est la réponse du terrain à un besoin ancien :
-            voir clair, garder la main, protéger son argent, organiser son activité
-            et grandir sans perdre son âme.
-          </p>
-
-          <div class="signature">
-            Le terrain travaille déjà.<br>
-            DIGIYLYFE lui donne la mémoire, la caisse, la voix et le cap.
-          </div>
-        </div>
+        </aside>
       </div>
-    </article>
-  </main>
+    </section>
 
-  <a class="floating-pay" href="https://pro-pay.digiylyfe.com/">💳 Voir PAY</a>
+    <main class="sap-wrap sap-main" id="article">
+      <article class="sap-article">
+        <div class="sap-article-inner" id="sapArticleText">
+          <div class="sap-intro-note">
+            DIGIYLYFE n’est pas seulement une application. C’est un système de gestion métier,
+            adapté au terrain, à la voix, au téléphone, au paiement direct et à la relation humaine.
+          </div>
 
-  <footer>
-    <div class="wrap">
-      <p><strong>DIGIYLYFE</strong> — La Supa-Apps du terrain vivant.</p>
-      <p>BY DIGIYLYFE · Le terrain garde la main.</p>
-    </div>
-  </footer>
+          <h2 class="sap-h2">DIGIYLYFE : donner au terrain ce que les grandes entreprises ont déjà</h2>
+
+          <p>
+            Il existe des logiciels puissants pour les grandes entreprises.
+            Ils organisent les ventes, les clients, les stocks, les paiements,
+            les marges, les dépenses, les alertes, les équipes et les processus.
+          </p>
+
+          <p>
+            Mais sur le terrain vivant, dans les boutiques, les taxis, les logements,
+            les services, les restaurants, les artisans et les petites activités locales,
+            beaucoup de professionnels travaillent encore avec la mémoire, le téléphone,
+            WhatsApp, Wave, le carnet, la parole donnée et quelques notes dispersées.
+          </p>
+
+          <p>
+            Le problème n’est pas que le terrain ne travaille pas.
+            Le terrain travaille beaucoup.
+          </p>
+
+          <p>
+            Le problème, c’est que l’activité ne laisse pas toujours une trace claire.
+          </p>
+
+          <p>
+            Une vente part. Un client promet. Une dette reste. Un stock baisse.
+            Une réservation arrive. Un trajet se prépare. Un paiement est reçu.
+            Une dépense est oubliée. Une preuve se perd.
+          </p>
+
+          <p>
+            Et à la fin de la journée, le professionnel a travaillé,
+            mais il ne voit pas toujours clairement où est passé son argent.
+          </p>
+
+          <p class="sap-big-line">
+            C’est là que DIGIYLYFE prend tout son sens.
+          </p>
+
+          <h2 class="sap-h2">DIGIYLYFE, l’écosystème métier du terrain vivant</h2>
+
+          <p>
+            DIGIYLYFE est un écosystème métier. Il ne vient pas remplacer le professionnel.
+            Il vient l’aider à garder la main.
+          </p>
+
+          <div class="sap-quote">
+            Le pro parle. DIGIY écoute. DIGIY prépare. Le pro valide.
+          </div>
+
+          <p>
+            C’est une logique simple, humaine et puissante.
+            Dans cet écosystème, chaque partie a son rôle.
+          </p>
+
+          <div class="sap-doctrine">
+            <div class="sap-tile">
+              <b>PAY</b>
+              <span>Le cerveau économique. Il tient l’argent, les recettes, les dépenses, les dettes et la pression.</span>
+            </div>
+            <div class="sap-tile">
+              <b>Les modules</b>
+              <span>Les organes du terrain : vente, caisse, réservation, trajet, logement, service, stock, client.</span>
+            </div>
+            <div class="sap-tile">
+              <b>Oreille Métier</b>
+              <span>La capture de la parole. Le pro parle, DIGIY prépare une trace propre.</span>
+            </div>
+            <div class="sap-tile">
+              <b>Le professionnel</b>
+              <span>La main qui valide. Rien n’est confirmé sans sa vérité.</span>
+            </div>
+          </div>
+
+          <p>
+            Un logiciel ne doit pas commander la vie du terrain.
+            Il doit l’aider à se structurer sans la dénaturer.
+          </p>
+
+          <h2 class="sap-h2">PAY : le cerveau économique</h2>
+
+          <p>
+            Dans DIGIYLYFE, PAY n’est pas seulement une page de paiement.
+            PAY est le cerveau économique.
+          </p>
+
+          <p>
+            C’est là que l’activité remonte. C’est là que les ventes, les dépenses,
+            les dettes, les recettes, les paiements, les preuves et les mouvements
+            doivent finir par être compris.
+          </p>
+
+          <p>
+            Si l’activité ne remonte pas à PAY, DIGIYLYFE ne peut pas produire
+            la vraie lecture.
+          </p>
+
+          <div class="sap-chain">
+            <h3 class="sap-h3">Sans remontée vers PAY, il manque le vrai cap.</h3>
+            <p>
+              Pas de température. Pas de marge claire. Pas de pression financière visible.
+              Pas de dettes bien suivies. Pas de recettes fiables. Pas de dépenses propres.
+              Pas d’alertes utiles. Pas de vraie direction.
+            </p>
+          </div>
+
+          <p>
+            Le terrain peut continuer à travailler, oui.
+            Mais il avance avec du brouillard.
+          </p>
+
+          <p>
+            PAY sert à enlever ce brouillard.
+            Il ne juge pas. Il ne complique pas. Il clarifie.
+          </p>
+
+          <p>
+            Une vente devient une trace. Une dépense devient une information.
+            Une dette devient un suivi. Un paiement devient une preuve.
+            Une journée devient une lecture. Une activité devient une direction.
+          </p>
+
+          <h2 class="sap-h2">La valeur de la trace</h2>
+
+          <p>
+            DIGIYLYFE doit accompagner doucement le professionnel.
+            Parce que sur le terrain, noter n’est pas toujours un réflexe.
+          </p>
+
+          <p>
+            Beaucoup de professionnels ont appris à travailler vite, à faire confiance
+            à leur mémoire, à répondre au client, à courir derrière l’urgence.
+          </p>
+
+          <div class="sap-quote">
+            Tu ne notes pas pour faire plaisir au logiciel.<br>
+            Tu notes pour protéger ton argent.<br>
+            Tu notes pour te souvenir.<br>
+            Tu notes pour voir clair.<br>
+            Tu notes pour grandir.
+          </div>
+
+          <p>
+            La trace n’est pas une punition. La trace est une protection.
+          </p>
+
+          <p>
+            C’est une mémoire qui protège. Une caisse qui clarifie.
+            Un carnet qui ne ment pas. Un assistant qui évite les oublis.
+          </p>
+
+          <p>
+            Quand le pro note une vente, il protège son chiffre.
+            Quand il note une dette, il protège son droit.
+            Quand il note une dépense, il protège sa marge.
+            Quand il garde une preuve, il protège sa parole.
+            Quand il relie son activité à PAY, il protège son avenir.
+          </p>
+
+          <h2 class="sap-h2">France et Afrique : deux besoins, une même clarté</h2>
+
+          <p>
+            En France, DIGIY peut vendre la clarté de gestion.
+          </p>
+
+          <p>
+            Beaucoup de professionnels savent déjà qu’il faut suivre, déclarer,
+            organiser, anticiper. Ils cherchent des outils simples, moins lourds,
+            plus humains et plus proches de leur métier.
+          </p>
+
+          <p>
+            En Afrique, DIGIY doit aussi enseigner la valeur de la trace.
+          </p>
+
+          <p>
+            Pas avec arrogance. Pas avec un langage de bureau.
+            Pas avec des tableaux froids.
+          </p>
+
+          <p>
+            Mais avec une pédagogie du terrain :
+            ton argent mérite une mémoire, ton travail mérite une preuve,
+            ton client mérite un suivi, ton activité mérite une direction.
+          </p>
+
+          <p class="sap-big-line">
+            Dans les deux cas, PAY reste le cerveau.
+          </p>
+
+          <h2 class="sap-h2" id="sap">SAP DIGIYLYFE : la couche organisationnelle du projet</h2>
+
+          <p>
+            Les grandes entreprises ont leurs systèmes.
+            Elles ont leurs outils, leurs processus, leurs tableaux,
+            leurs lectures et leurs directions.
+          </p>
+
+          <div class="sap-comparison">
+            <section class="sap-compare-card">
+              <h3 class="sap-h3">SAP</h3>
+              <ul>
+                <li>Parle aux directions.</li>
+                <li>Parle aux bureaux.</li>
+                <li>Organise les groupes.</li>
+                <li>Lit l’entreprise.</li>
+              </ul>
+            </section>
+
+            <section class="sap-compare-card sap-dark">
+              <h3 class="sap-h3">DIGIYLYFE</h3>
+              <ul>
+                <li>Parle aux métiers.</li>
+                <li>Parle au téléphone du pro.</li>
+                <li>Organise le terrain.</li>
+                <li>Lit la vie économique locale.</li>
+              </ul>
+            </section>
+          </div>
+
+          <p>
+            C’est là que SAP DIGIYLYFE trouve sa place : non pas comme imitation,
+            mais comme nom de la couche organisationnelle du projet.
+          </p>
+
+          <p>
+            C’est la couche qui relie les modules. C’est la couche qui donne du sens
+            aux traces. C’est la couche qui transforme les gestes du quotidien
+            en intelligence métier.
+          </p>
+
+          <div class="sap-module-grid">
+            <div class="sap-module">PAY<small>tient l’argent</small></div>
+            <div class="sap-module">POS<small>tient la caisse</small></div>
+            <div class="sap-module">MARKET<small>tient la vente</small></div>
+            <div class="sap-module">RESA<small>tient la réservation</small></div>
+            <div class="sap-module">DRIVER<small>tient le transport</small></div>
+            <div class="sap-module">LOC<small>tient le logement</small></div>
+            <div class="sap-module">BUILD<small>tient les services</small></div>
+            <div class="sap-module">Oreille Métier<small>capte la parole</small></div>
+            <div class="sap-module">SAP DIGIYLYFE<small>relie tout ça</small></div>
+          </div>
+
+          <p>
+            Une vente dans MARKET. Un paiement dans PAY. Une caisse dans POS.
+            Une réservation dans RESA. Un trajet dans DRIVER. Un logement dans LOC.
+            Un service dans BUILD. Une parole captée par Oreille Métier.
+          </p>
+
+          <p>
+            Tout cela ne doit pas rester séparé.
+            DIGIYLYFE doit relier, lire, clarifier, protéger et aider le pro à décider.
+          </p>
+
+          <h2 class="sap-h2">Donner au terrain ce que les grands ont déjà</h2>
+
+          <p>
+            La vérité est simple. DIGIYLYFE veut donner au terrain ce que les grandes
+            entreprises ont déjà :
+          </p>
+
+          <ul>
+            <li>de la structure,</li>
+            <li>des outils,</li>
+            <li>une lecture,</li>
+            <li>une mémoire,</li>
+            <li>des processus,</li>
+            <li>un argent suivi,</li>
+            <li>un client gardé,</li>
+            <li>une activité organisée.</li>
+          </ul>
+
+          <p>
+            Mais avec une différence fondamentale :
+            DIGIYLYFE ne parle pas depuis une tour de verre.
+          </p>
+
+          <p>
+            DIGIYLYFE parle depuis le téléphone.
+            Depuis la boutique. Depuis le taxi. Depuis le logement.
+            Depuis le chantier. Depuis le restaurant. Depuis le marché.
+            Depuis WhatsApp. Depuis Wave. Depuis la voix. Depuis le QR.
+            Depuis la relation humaine.
+          </p>
+
+          <p>
+            Le terrain ne doit pas devenir une entreprise froide.
+            Il doit devenir un terrain mieux équipé.
+          </p>
+
+          <p>
+            Le pro garde son nom. Il garde son client. Il garde son argent.
+            Il garde sa relation. Il garde sa dignité.
+          </p>
+
+          <p>
+            DIGIYLYFE apporte la structure autour de lui.
+          </p>
+
+          <div class="sap-finale">
+            <h2 class="sap-h2">La ligne était déjà là</h2>
+
+            <p>
+              Aujourd’hui, on ne découvre pas DIGIYLYFE. On le reconnaît.
+            </p>
+
+            <p>
+              La ligne était déjà là : un système de gestion métier, adapté au terrain,
+              à la voix, au téléphone, au paiement direct et à la relation humaine.
+            </p>
+
+            <p>
+              Un écosystème où PAY tient l’argent, où les modules tiennent les métiers,
+              où Oreille capte la parole, où le pro valide, où la trace protège,
+              où la caisse clarifie, où le carnet ne ment pas, où l’assistant évite les oublis.
+            </p>
+
+            <p>
+              SAP DIGIYLYFE n’est pas une copie des grands systèmes.
+              C’est la réponse du terrain à un besoin ancien :
+              voir clair, garder la main, protéger son argent, organiser son activité
+              et grandir sans perdre son âme.
+            </p>
+
+            <div class="sap-signature">
+              Le terrain travaille déjà.<br>
+              DIGIYLYFE lui donne la mémoire, la caisse, la voix et le cap.
+            </div>
+          </div>
+        </div>
+      </article>
+    </main>
+
+    <a class="sap-floating-pay" href="https://pro-pay.digiylyfe.com/">💳 Voir PAY</a>
+
+    <footer class="sap-footer">
+      <div class="sap-wrap">
+        <p><strong>DIGIYLYFE</strong> — La Supa-Apps du terrain vivant.</p>
+        <p>BY DIGIYLYFE · Le terrain garde la main.</p>
+      </div>
+    </footer>
+  </div>
 
   <script>
     (function(){
       const listenButtons = [
-        document.getElementById("listenBtn"),
-        document.getElementById("heroListenBtn"),
-        document.getElementById("topListenBtn")
+        document.getElementById("sapListenBtn"),
+        document.getElementById("sapHeroListenBtn"),
+        document.getElementById("sapTopListenBtn")
       ].filter(Boolean);
 
-      const stopBtn = document.getElementById("stopBtn");
-      const articleText = document.getElementById("articleText");
+      const stopBtn = document.getElementById("sapStopBtn");
+      const articleText = document.getElementById("sapArticleText");
 
       function cleanForVoice(text){
         return String(text || "")
