@@ -8,6 +8,7 @@
   <meta name="description" content="DIGIY STRUCTURE relie PAY, POS, MARKET, RESA, DRIVER, LOC, BUILD et Oreille Métier pour donner au terrain une mémoire, une caisse, une voix et un cap." />
   <meta name="theme-color" content="#0d140c" />
   <meta name="robots" content="index,follow" />
+  <meta name="digiy-fix-floating-pay-left" content="bouton-pay-gauche-20260608" />
 
   <meta property="og:title" content="DIGIY STRUCTURE — L’intelligence métier du terrain vivant" />
   <meta property="og:description" content="DIGIYLYFE donne au terrain ce que les grandes entreprises ont déjà : structure, mémoire, argent suivi, client gardé et activité organisée." />
@@ -546,7 +547,8 @@
 
     .sap-floating-pay{
       position:fixed;
-      right:18px;
+      left:18px;
+      right:auto;
       bottom:18px;
       z-index:80;
       border-radius:999px;
@@ -624,8 +626,8 @@
 
       .sap-floating-pay{
         left:16px;
-        right:16px;
-        text-align:center;
+        right:auto;
+        text-align:left;
       }
     }
   </style>
@@ -1119,4 +1121,6 @@
   <script src="https://pro-action-digiy.digiylyfe.com/assets/js/digiy-retour-voix.js?v=retour-voix-20260606-v4" defer></script>
 </body>
 </html>
+
+
 
